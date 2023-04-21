@@ -13,21 +13,20 @@
   </div>
 </form>
 
-<div *ngFor="let item of list; let i=index">
-  {{item.id}}
-    <div class="col-1">
-        <button class="btn btn-danger btn-sm pull-right" (click)="Delete(i)">Delete</button>
+<div class="p-4" *ngFor="let item of list; let i=index">
+  <div class="w-full bg-blue-200 p-2 rounded-2xl flex justify-between">
+    <div>
+      <input class="form-check-input" (change)="ChangeStatus(i,item.IsComplete)" type="checkbox"
+             [checked]="item.IsComplete" id="{{i}}">
+      <label class="form-check-label" for="{{i}}" *ngIf="item.IsComplete">
+        <s>{{item.TaskName}}</s>
+      </label>
+      <label class="form-check-label" for="{{i}}" *ngIf="!item.IsComplete">
+        {{item.TaskName}}
+      </label>
     </div>
-    <div class="col-5">
-        <div class="form-check my-1">
-            <input class="form-check-input" (change)="ChangeStatus(i,item.IsComplete)" type="checkbox"
-                [checked]="item.IsComplete" id="{{i}}">
-            <label class="form-check-label" for="{{i}}" *ngIf="item.IsComplete">
-                <s>{{item.TaskName}}</s>
-            </label>
-            <label class="form-check-label" for="{{i}}" *ngIf="!item.IsComplete">
-                {{item.TaskName}}
-            </label>
-        </div>
+    <div>
+      <i class="fa-solid fa-trash mr-2 text-blue-800 cursor-pointer" (click)="Delete(i)"></i>
     </div>
+  </div>
 </div>

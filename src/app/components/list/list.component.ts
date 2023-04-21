@@ -22,6 +22,7 @@ export class ListComponent {
     };
     this.list.push(obj);
     this.Save();
+    form.resetForm();
   }
 
   ChangeStatus(index: number, currentValue: boolean) {
