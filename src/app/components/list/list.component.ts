@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {NgFor} from "@angular/common";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-list',
@@ -6,21 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
-list: any = []
-  task: string = "";
+  list: any = []
+  task?: string;
 
   ngOnInit(): void {
     this.GetAll();
   }
 
-  Add() {
+  onSubmit(form: NgForm) {
     let obj = {
-      TaskName: this.task,
+      TaskName: form.value.task,
       IsComplete: false
     };
     this.list.push(obj);
     this.Save();
-    this.task = '';
   }
 
   ChangeStatus(index: number, currentValue: boolean) {
@@ -56,4 +57,6 @@ list: any = []
       this.list = JSON.parse(value!);
     }
   }
+
+  protected readonly onsubmit = onsubmit;
 }

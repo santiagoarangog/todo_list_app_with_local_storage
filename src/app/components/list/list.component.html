@@ -1,16 +1,20 @@
-<div class="row m-3">
-    <div class="col-6">
-        <input type="text" class="form-control" placeholder="Enter Task" [(ngModel)]="task" />
-    </div>
-    <div class="col-1">
-        <button class="btn btn-primary" (click)="Add()">Add</button>
-    </div>
-    <div class="col-2">
-        <button class="btn btn-danger" (click)="DeleteAll()">Delete All</button>
-    </div>
-</div>
+<form class="w-full p-2" #formTask="ngForm"  (ngSubmit)="onSubmit(formTask)">
+  <div class="flex items-center border-b border-blue-500 py-2">
+    <input type="text" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+           placeholder="Ingresa la tarea" [(ngModel)]="task" name="task" />
+    <button class="flex-shrink-0 bg-blue-500 hover:bg-blue-300 border-blue-500 hover:border-blue-300 text-sm border-4 text-white py-1 px-2 rounded"
+            type="submit" [disabled]="!formTask.valid">
+      Enviar
+    </button>
+    <button class="flex-shrink-0 border-transparent border-4 text-blue-500 hover:text-blue-800 text-sm py-1 px-2 rounded" type="button"
+            (click)="DeleteAll()">
+      Eliminar todo
+    </button>
+  </div>
+</form>
 
-<div class="row m-3" *ngFor="let item of list; let i=index">
+<div *ngFor="let item of list; let i=index">
+  {{item.id}}
     <div class="col-1">
         <button class="btn btn-danger btn-sm pull-right" (click)="Delete(i)">Delete</button>
     </div>
