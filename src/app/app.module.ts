@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListComponent } from './components/list/list.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    ListComponent
+    ListComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,
