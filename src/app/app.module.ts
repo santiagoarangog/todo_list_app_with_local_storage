@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListComponent } from './components/list/list.component';
 
@@ -12,10 +12,11 @@ import { ListComponent } from './components/list/list.component';
     SidebarComponent,
     ListComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

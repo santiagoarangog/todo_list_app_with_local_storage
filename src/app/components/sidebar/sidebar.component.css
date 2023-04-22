@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col justify-center items-center h-screen bg-[url('public/images/search.svg')] bg-center bg-no-repeat;
+  @apply flex flex-col justify-center items-center h-screen bg-[url('public/images/notes.svg')] bg-bottom bg-no-repeat bg-origin-content;
 }
 .container__title {
   @apply font-redhat text-2xl font-bold !important;

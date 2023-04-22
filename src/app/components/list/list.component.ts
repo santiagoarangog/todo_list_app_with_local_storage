@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {NgFor} from "@angular/common";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-list',
@@ -8,21 +7,25 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
+  myForm?: FormGroup;
   list: any = []
   task?: string;
 
   ngOnInit(): void {
     this.GetAll();
+    this.myForm = new FormGroup({
+      task: new FormControl('', Validators.required),
+    });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     let obj = {
-      TaskName: form.value.task,
+      TaskName: this.myForm?.get('task')?.value,
       IsComplete: false
     };
     this.list.push(obj);
     this.Save();
-    form.resetForm();
+    this.myForm?.reset();
   }
 
   ChangeStatus(index: number, currentValue: boolean) {
@@ -57,6 +60,10 @@ export class ListComponent {
     if (value != '' && value != null && typeof value != "undefined") {
       this.list = JSON.parse(value!);
     }
+  }
+
+  isFormValid(): boolean {
+    return <boolean>this.myForm?.valid;
   }
 
   protected readonly onsubmit = onsubmit;
